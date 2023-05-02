@@ -1,7 +1,9 @@
 package Commands.ControlllerCommands;
 
+import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
 
 import Commands.ControlllerCommands.Base.ControllerCommand;
 import Controllers.Controller;
@@ -28,8 +30,9 @@ public class SaveToFileToysCommand extends ControllerCommand {
         String fileName = view.getString()+".txt";
 
         try {
-            File file = new File("./", fileName);
-            FileWriter fw = new FileWriter(file);
+            File file = new File("./InOutFiles", fileName);
+            OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream(file), "utf-8");
+            BufferedWriter fw = new BufferedWriter(osw);
             for (Toy Toy : Toys.getToysToArrayList()) {
                 fw.write(Toy.getId().toString()+"\n");
                 fw.write(Toy.getName()+"\n");

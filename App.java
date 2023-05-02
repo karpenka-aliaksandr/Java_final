@@ -7,7 +7,7 @@ import Views.View;
 
 public class App {
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in,"Cp866");
+        Scanner scan = new Scanner(System.in,"cp866");
 
         Toys toys = new Toys();
         View view = new View(scan);

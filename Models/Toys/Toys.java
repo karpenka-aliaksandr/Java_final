@@ -22,6 +22,18 @@ public class Toys {
     public boolean removeToy(Toy toy) {
         return toys.remove(toy);
     }
+    public boolean removeToy(Integer id) {
+        boolean result = false;
+        for (Toy toy : toys) {
+            if (toy.getId() == id) result = toys.remove(toy);
+        }
+        return result;
+    }
+    
+    public void removeAllToy() {
+        count = 0;
+        this.toys = new ArrayList<>();
+    }
 
     public int getCount() {
         return count;

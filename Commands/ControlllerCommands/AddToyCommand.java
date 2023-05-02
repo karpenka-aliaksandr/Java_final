@@ -89,7 +89,6 @@ public class AddToyCommand extends ControllerCommand {
         }
 
         toys.addToy(new Toy(id, name, count, frequency));
-        screen.setBar("Введите пункт меню:");
         screen.setData(controller.getToys().toString());
         screen.setMenu(menu);
         screen.setBar("Введите пункт меню:");

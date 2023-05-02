@@ -2,7 +2,9 @@ package Commands.ControlllerCommands;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
+
 import Commands.ControlllerCommands.Base.ControllerCommand;
 import Controllers.Controller;
 import Models.Menu.Menu;
@@ -26,10 +28,11 @@ public class LoadFromFileToysCommand extends ControllerCommand {
         String fileName = view.getString()+".txt";
 
         try {
-            File file = new File("./", fileName);
-            FileReader fr = new FileReader(file);
-            BufferedReader reader = new BufferedReader(fr);
+            File file = new File("./InOutFiles", fileName);
+            InputStreamReader isr = new InputStreamReader(new FileInputStream(file), "utf-8");
+            BufferedReader reader = new BufferedReader(isr);
             String s_id = reader.readLine();
+            controller.getToys().removeAllToy();
             while (s_id != null) {
                 Integer id = Integer.valueOf(s_id);
                 String name = reader.readLine();
@@ -40,8 +43,9 @@ public class LoadFromFileToysCommand extends ControllerCommand {
                 s_id = reader.readLine();
             }
             reader.close();
-            fr.close();
+            isr.close();
             screen.setBar("Витрина успешно загружена.\n\nВведите пункт меню:");
+            
         } catch (Exception e) {
             screen.setBar("Не удалось загрузить витрину (файл поврежден или не найден).\n\nВведите пункт меню:");
             e.printStackTrace();
