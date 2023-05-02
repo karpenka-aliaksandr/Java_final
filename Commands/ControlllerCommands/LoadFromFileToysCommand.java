@@ -25,7 +25,7 @@ public class LoadFromFileToysCommand extends ControllerCommand {
         Menu menu = screen.getMenu();
         screen.setMenu(new Menu());
         screen.setBar("Введите имя файла: ");
-        String fileName = view.getString()+".txt";
+        String fileName = view.getString()+".sc";
 
         try {
             File file = new File("./InOutFiles", fileName);

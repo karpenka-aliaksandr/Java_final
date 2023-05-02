@@ -23,7 +23,7 @@ public class AddToyCommand extends ControllerCommand {
         Menu menu = screen.getMenu();
         Toys toys = controller.getToys();
         screen.setMenu(new Menu());
-        screen.setBar("Введите id игрушки: ");
+        screen.setBar("Введите id игрушки (0 - назначится автоматически): ");
         Integer id;
         while (true) {
             id = 0;

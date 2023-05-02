@@ -26,8 +26,8 @@ public class SaveToFileToysCommand extends ControllerCommand {
         Menu menu = screen.getMenu();
         Toys Toys = controller.getToys();
         screen.setMenu(new Menu());
-        screen.setBar("Введите имя файла: ");
-        String fileName = view.getString()+".txt";
+        screen.setBar("Введите имя файла (showcase): ");
+        String fileName = view.getString()+".sc";
 
         try {
             File file = new File("./InOutFiles", fileName);
