@@ -16,16 +16,27 @@ public class Toys {
     }
 
     public boolean addToy(Toy toy) {
+        this.count++;
         return toys.add(toy);
     }
     
     public boolean removeToy(Toy toy) {
+        this.count--;
         return toys.remove(toy);
     }
+
+    public void removeIndex(int index) {
+        this.count--;
+        toys.remove(index);
+    }
+
     public boolean removeToy(Integer id) {
         boolean result = false;
         for (Toy toy : toys) {
-            if (toy.getId() == id) result = toys.remove(toy);
+            if (toy.getId() == id) {
+                this.count--;
+                result = toys.remove(toy);
+            }
         }
         return result;
     }
@@ -37,6 +48,14 @@ public class Toys {
 
     public int getCount() {
         return count;
+    }
+
+    public Toy getToy(Integer id){
+        Toy result = null;
+        for (Toy toy : toys) {
+            if (toy.getId() == id) result = toy;
+        }
+        return result;
     }
 
     @Override

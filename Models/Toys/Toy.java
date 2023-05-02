@@ -53,7 +53,7 @@ public class Toy {
                 "id: " + String.format("%-5d", id) + 
                 " Наименование: " + String.format("%-20s",name) + 
                 " Количество: " + String.format("%-5d",count) +
-                " Вероятность выпадения в розыгрыше: " + frequency + "%";
+                " Вероятность выпадения в розыгрыше: " + frequency + " к 100";
     }
 }
 

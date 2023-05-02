@@ -23,7 +23,8 @@ public class AddToyCommand extends ControllerCommand {
         Menu menu = screen.getMenu();
         Toys toys = controller.getToys();
         screen.setMenu(new Menu());
-        screen.setBar("Введите id игрушки (0 - назначится автоматически): ");
+        String prompt = "Введите id игрушки (0 - назначится автоматически): ";
+        screen.setBar(prompt);
         Integer id;
         while (true) {
             id = 0;
@@ -31,15 +32,15 @@ public class AddToyCommand extends ControllerCommand {
             try {
                 id = Integer.valueOf(s_id);   
             }catch (NumberFormatException e) {  
-                screen.setBar("Неправильный формат числа!\nВведите id игрушки (0 - назначится автоматически): ");  
+                screen.setBar("Неправильный формат числа!\n" + prompt);  
                 continue;
             } 
             if (toys.getIdsToArrayList().contains(id)) {
-                screen.setBar("id = " + id.toString() + " уже существует, a должен быть уникальным!\nВведите id игрушки (0 - назначится автоматически): ");  
+                screen.setBar("id = " + id.toString() + " уже существует, a должен быть уникальным!\n" + prompt);  
                 continue;
             }
             if (id < 0) {
-                screen.setBar("id = " + id.toString() + ", а должен быть положительным!\nВведите id игрушки (0 - назначится автоматически): ");  
+                screen.setBar("id = " + id.toString() + ", а должен быть положительным!\n" + prompt);  
                 continue;
             }
             if (id == 0) {

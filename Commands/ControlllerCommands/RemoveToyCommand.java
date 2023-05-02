@@ -20,7 +20,9 @@ public class RemoveToyCommand extends ControllerCommand {
         Menu menu = screen.getMenu();
         Toys toys = controller.getToys();
         screen.setMenu(new Menu());
-        screen.setBar("Введите id игрушки, которую хотите удалить (-1 - удалить все, 0 - выйти без удаления): ");
+        String prompt = "Введите id игрушки, которую хотите удалить (-1 - удалить все, 0 - выйти без удаления): ";
+        String punkt = "\nВведите пункт меню:";
+        screen.setBar(prompt);
         Integer id;
         while (true) {
             id = 0;
@@ -28,27 +30,27 @@ public class RemoveToyCommand extends ControllerCommand {
             try {
                 id = Integer.valueOf(s_id);   
             }catch (NumberFormatException e) {  
-                screen.setBar("Неправильный формат числа!\nВведите id игрушки, которую хотите удалить (-1 - удалить все, 0 - выйти без удаления): ");  
+                screen.setBar("Неправильный формат числа!\n" + prompt);  
                 continue;
             } 
             if (id == 0 ) {
-                screen.setBar("Ничего не удалено.\n\nВведите пункт меню:");
+                screen.setBar("Ничего не удалено.\n" + punkt);
                 break;
             }
             if (id == -1 ) {
                 toys.removeAllToy();
-                screen.setBar("Удалены все записи.\n\nВведите пункт меню:");
+                screen.setBar("Удалены все записи.\n" + punkt);
                 break;
             }
 
             if (toys.getIdsToArrayList().contains(id)) {
                 if (toys.removeToy(id))
-                    screen.setBar("Удалена запись с id = " + id + ".\n\nВведите пункт меню:");
+                    screen.setBar("Удалена запись с id = " + id + ".\n" + punkt);
                 else 
-                    screen.setBar("Не удалена запись с id = " + id + ".\n\nВведите пункт меню:");
+                    screen.setBar("Не удалена запись с id = " + id + ".\n" + punkt);
                 break;
             } else {
-                screen.setBar("Нет записи с id = " + id + ".\nВведите id игрушки, которую хотите удалить (-1 - удалить все, 0 - выйти без удаления): ");  
+                screen.setBar("Нет записи с id = " + id + ".\n" + prompt);  
                 continue;
             }
         }

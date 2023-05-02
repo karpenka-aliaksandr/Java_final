@@ -20,7 +20,7 @@ public class View {
     }
 
     public String getString() {
-        String s = scan.next();
+        String s = scan.next(); 
         return s;
     }
 
